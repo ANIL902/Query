@@ -1,0 +1,15 @@
+<form [formGroup]="createform">
+    <mat-form-field>
+    <input matInput formControlName="floorArbName" placeholder="Name" required>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput formControlName="floorName" placeholder="floorName" required>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput formControlName="orgId" placeholder="orgid" required>
+    </mat-form-field>
+</form>
+<div mat-dialog-actions>
+    <button mat-button (click)="onclick()">cancel</button>
+    <button  mat-button [disabled]="!createform.valid"[mat-dialog-close]="createform.value">create</button>
+</div>

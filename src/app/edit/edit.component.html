@@ -1,0 +1,22 @@
+<form [formGroup]="editform">
+    <mat-form-field>
+        <input matInput formControlName="floorArbName" placeholder="Floorname">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput formControlName="floorId" placeholder="Floorid">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput formControlName="floorName" placeholder="FloorName">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput formControlName="orgId" placeholder="orgid">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput formControlName="status"placeholder="status">
+    </mat-form-field>
+</form>
+<div mat-dialog-actions>
+    <button mat-button (click)="onclick()">cancel</button>
+    <button mat-button [mat-dialog-close]="editform.value" (click)="editdat()">Update</button>
+</div>
+

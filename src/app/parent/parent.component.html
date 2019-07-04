@@ -1,0 +1,11 @@
+<h4>parent Component is:</h4>
+<input type="text " #Pcomponent (keyup)="showChild(Pcomponent.value)"/>
+<p *ngIf="CData">Value Of Child Component is: {{ CData }} </p>
+<div *ngIf="showChildContent">
+<app-child [PData]="Pcomponent.value" (childEvent)="CData=$event"></app-child>
+</div>
+
+
+<div *ngIf="CData">
+   <app-child1 [CData]="CData" ></app-child1>
+</div>

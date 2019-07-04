@@ -1,0 +1,73 @@
+<mat-vertical-stepper [linear]="!isLinear">
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup] = "firstFormGroup">
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+        </mat-form-field><br/>
+        <mat-form-field>
+            <input matInput placeholder="Mobile No" formControlName="mbileno" required>
+        </mat-form-field><br/>
+        <mat-form-field>
+            <input matInput placeholder="Email.Id" formControlName="emailid" required>
+        </mat-form-field><br/>
+        <mat-radio-group aria-label="Select an option"  (change)="radioChange($event.value)">
+            <mat-radio-button value="adhardeatils" >Adhardetails</mat-radio-button>
+            <mat-radio-button value="Pandeatails">Pandeatails</mat-radio-button>
+        </mat-radio-group>
+        <div *ngIf="adharcard">      
+            <mat-form-field >
+                <input matInput placeholder="AdharName"  formControlName="adharname" required>
+                <mat-error *ngIf="firstFormGroup.controls.adharname.errors?.required">AdharNamerRequired</mat-error>
+                <mat-error *ngIf="firstFormGroup.controls.adharname.errors?.pattern">Not Allows special Characters And Numerics</mat-error>
+            </mat-form-field><br/>
+            <mat-form-field>
+                <input matInput placeholder="adharnumber" formControlName="adharnumber" maxlength="16" required>
+                <mat-error *ngIf="firstFormGroup.controls.adharnumber.errors?.required">AdharNumberRequired</mat-error>
+                <mat-error *ngIf="firstFormGroup.controls.adharnumber.errors?.pattern">Number Must be digits only</mat-error>
+            </mat-form-field>
+        </div> 
+        <div *ngIf="pancard">
+            <mat-form-field>
+                <input matInput placeholder="PanName" formControlName="panname" required>
+                <mat-error *ngIf="firstFormGroup.controls.panname.errors?.required">PanNameRequired</mat-error>
+                <mat-error *ngIf="firstFormGroup.controls.panname.errors?.pattern">Not Allows special Characters And Numerics</mat-error>
+                
+            </mat-form-field><br/>
+            <mat-form-field>
+                <input matInput placeholder="PanNumber" formControlName="pannum"maxlength="10" required>
+                <mat-error *ngIf="firstFormGroup.controls.pannum.errors?.required">PanNumberRequired</mat-error>
+                <mat-error *ngIf="firstFormGroup.controls.pannum.errors?.pattern">Not Allows special Characters</mat-error>
+            </mat-form-field>
+        </div>   
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Fill out your address</ng-template>
+          <mat-form-field>
+            <input matInput placeholder="Department Name" formControlName="secondCtrl" required>
+          </mat-form-field><br/>
+          <mat-form-field>
+            <input matInput placeholder="EmpId" formControlName="empid" required>
+          </mat-form-field><br/>
+          <mat-form-field>
+            <input matInput placeholder="Salary" formControlName="slary" required>
+          </mat-form-field><br/>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+        </div>
+      </mat-step>
+   
+</mat-vertical-stepper>
